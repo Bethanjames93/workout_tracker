@@ -1,4 +1,4 @@
-onst API = {
+const  api = {
     async getLastWorkout() {
       let res;
       try {
