@@ -17,18 +17,18 @@ const newWorkout = document.querySelector(".new-workout")
 let workoutType = null;
 let shouldNavigateAway = false;
 
-init();
-
-async function init() {
+async function initExercise() {
+  let workout;
   if (location.search.split("=")[1] === undefined) {
-    const workout = await API.getLastWorkout();
-    if (workout) {
-      location.search = "?id=" + workout._id;
-    } else {
-      newWorkout.classList.add("")
-    }
+    workout = await API.createWorkout()
+    console.log(workout)
+  }
+  if (workout) {
+    location.search = "?id=" + workout._id;
   }
 }
+
+initExercise();
 
 function handleWorkoutTypeChange(event) {
   workoutType = event.target.value;
